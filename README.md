@@ -102,7 +102,7 @@ String idAlphabet = NanoIdUtils.randomNanoId(Random(), NanoIdUtils.DEFAULT_ALPHA
 ```
 
 ## License
-Code released under the [MIT License]()
+Code released under the [MIT License](https://github.com/DATL4G/KMP-NanoId/blob/master/LICENSE)
 
 ## Other Programming Languages
 
