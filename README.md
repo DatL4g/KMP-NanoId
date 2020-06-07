@@ -1,5 +1,7 @@
 # Kotlin Multiplatform NanoId
 
+[![CircleCI](https://circleci.com/gh/DATL4G/KMP-NanoId.svg?style=svg)](https://circleci.com/gh/DATL4G/KMP-NanoId)
+
 A unique string ID generator for Javascript, JVM and Native written in Kotlin.
 
 ### Secure
