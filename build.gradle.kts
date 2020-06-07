@@ -16,6 +16,7 @@ repositories {
         url = uri("https://dl.bintray.com/korlibs/korlibs")
     }
 }
+
 kotlin {
     jvm {
         compilations.all {
@@ -23,9 +24,7 @@ kotlin {
         }
     }
     js {
-        browser {
-            
-        }
+        browser { }
     }
     val hostOs = System.getProperty("os.name")
     val isMingwX64 = hostOs.startsWith("Windows")
