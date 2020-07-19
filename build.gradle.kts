@@ -27,7 +27,6 @@ android {
     defaultConfig {
         versionCode = 11
         versionName = "1.1.0"
-        applicationId = "de.datlag.nanoid"
     }
 
     buildTypes {
