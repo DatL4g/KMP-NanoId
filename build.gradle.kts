@@ -1,8 +1,8 @@
 plugins {
-    kotlin("multiplatform") version "1.4-M2"
+    id("org.jetbrains.kotlin.multiplatform") version "1.3.72"
 }
 group = "de.datlag"
-version = "1.0"
+version = "1.1.0"
 
 repositories {
     mavenLocal()
@@ -16,6 +16,8 @@ repositories {
         url = uri("https://dl.bintray.com/korlibs/korlibs")
     }
 }
+
+apply(plugin = "maven-publish")
 
 kotlin {
     jvm {
@@ -34,13 +36,16 @@ kotlin {
         isMingwX64 -> mingwX64("native")
         else -> throw GradleException("Host OS is not supported in Kotlin/Native.")
     }
-
-    
+    // For ARM, should be changed to iosArm32 or iosArm64
+    // For Linux, should be changed to e.g. linuxX64
+    // For MacOS, should be changed to e.g. macosX64
+    // For Windows, should be changed to e.g. mingwX64
+    linuxX64("linux")
     sourceSets {
         val commonMain by getting {
             dependencies {
                 implementation(kotlin("stdlib-common"))
-                implementation("com.soywiz.korlibs.krypto:krypto:1.11.1")
+                implementation("com.soywiz.korlibs.krypto:krypto:1.11.2")
             }
         }
         val commonTest by getting {
@@ -56,6 +61,7 @@ kotlin {
         }
         val jvmTest by getting {
             dependencies {
+                implementation(kotlin("test"))
                 implementation(kotlin("test-junit"))
             }
         }
@@ -69,7 +75,7 @@ kotlin {
                 implementation(kotlin("test-js"))
             }
         }
-        val nativeMain by getting { }
-        val nativeTest by getting { }
+        val linuxMain by getting { }
+        val linuxTest by getting { }
     }
 }

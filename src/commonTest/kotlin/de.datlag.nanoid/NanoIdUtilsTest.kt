@@ -5,7 +5,6 @@ import kotlin.test.*
 
 class NanoIdUtilsTest {
 
-    @ExperimentalStdlibApi
     @Test
     fun NanoIdUtils_Verify100KRandomNanoIdsAreUnique() {
         val idCount = 100000
@@ -22,7 +21,6 @@ class NanoIdUtilsTest {
         }
     }
 
-    @ExperimentalStdlibApi
     @Test
     fun NanoIdUtils_SeededRandom() {
         val random = Random(12345)
@@ -34,7 +32,10 @@ class NanoIdUtilsTest {
         }
     }
 
-    @ExperimentalStdlibApi
+    /* Fails on Linux and Native
+     * presumably because the memory for the variable is not released
+     * This is not a mistake by the library, but by Kotlin or the C library created
+     */
     @Test
     fun NanoIdUtils_VariousSizes() {
         for(size in 1 until 1001) {
@@ -44,8 +45,8 @@ class NanoIdUtilsTest {
         }
     }
 
-    @ExperimentalStdlibApi
     @Test
+    @ExperimentalStdlibApi
     fun NanoIdUtils_WellDistributed() {
         val idCount = 100000
         val idSize = 20
@@ -73,7 +74,6 @@ class NanoIdUtilsTest {
         }
     }
 
-    @ExperimentalStdlibApi
     @Test
     fun NanoIdUtils_EmptyAlphabet_Exception() {
         assertFailsWith<IllegalArgumentException> {
@@ -81,7 +81,6 @@ class NanoIdUtilsTest {
         }
     }
 
-    @ExperimentalStdlibApi
     @Test
     fun NanoIdUtils_256Alphabet_Exception() {
         val largeAlphabet = CharArray(256)
@@ -94,7 +93,6 @@ class NanoIdUtilsTest {
         }
     }
 
-    @ExperimentalStdlibApi
     @Test
     fun NanoIdUtils_NegativeSize_Exception() {
         assertFailsWith<IllegalArgumentException> {
@@ -102,7 +100,6 @@ class NanoIdUtilsTest {
         }
     }
 
-    @ExperimentalStdlibApi
     @Test
     fun NanoIdUtils_ZeroSize_Exception() {
         assertFailsWith<IllegalArgumentException> {
