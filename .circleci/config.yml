@@ -32,8 +32,16 @@ jobs:
             - v1-dependencies-
 
       - run:
+          name: Add Universe Repository
+          command: sudo add-apt-repository universe
+
+      - run:
+          name: Update
+          command: sudo apt-get update
+
+      - run:
           name: Install C-Bridge tool
-          command: sudo apt install -y libncurses5
+          command: sudo apt-get install -y libncurses5
 
       - run: gradle dependencies
 
