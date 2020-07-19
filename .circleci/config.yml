@@ -33,7 +33,7 @@ jobs:
 
       - run:
           name: Add Universe Repository
-          command: sudo apt-get install software-properties-commo && sudo add-apt-repository universe
+          command: sudo apt-get install software-properties-common && sudo add-apt-repository universe
 
       - run:
           name: Update
