@@ -32,10 +32,6 @@ jobs:
             - v1-dependencies-
 
       - run:
-          name: Add Universe Repository
-          command: sudo apt-get install software-properties-common && sudo add-apt-repository universe
-
-      - run:
           name: Update
           command: sudo apt-get update
 
