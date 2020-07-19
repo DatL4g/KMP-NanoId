@@ -31,6 +31,10 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
+      - run:
+          name: Install C-Bridge tool
+          command: sudo apt install -y libncurses5
+
       - run: gradle dependencies
 
       - save_cache:

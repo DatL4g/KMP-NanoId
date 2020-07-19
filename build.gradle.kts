@@ -1,5 +1,7 @@
 plugins {
-    id("org.jetbrains.kotlin.multiplatform") version "1.3.72"
+    id("com.android.library") version "3.6.1"
+    kotlin("multiplatform").version("1.3.72")
+    id("maven-publish")
 }
 group = "de.datlag"
 version = "1.1.0"
@@ -9,6 +11,7 @@ repositories {
     mavenCentral()
     jcenter()
     google()
+    gradlePluginPortal()
     maven {
         url = uri("https://dl.bintray.com/kotlin/kotlin-eap")
     }
@@ -17,7 +20,35 @@ repositories {
     }
 }
 
-apply(plugin = "maven-publish")
+android {
+    compileSdkVersion = 29.toString()
+    buildToolsVersion = "29.0.3"
+
+    defaultConfig {
+        versionCode = 11
+        versionName = "1.1.0"
+        applicationId = "de.datlag.nanoid"
+    }
+
+    buildTypes {
+        val debug by getting {
+            isMinifyEnabled = false
+            isDebuggable = true
+            isShrinkResources = false
+        }
+
+        val release by getting {
+            isMinifyEnabled = true
+            isDebuggable = false
+            isShrinkResources = false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+}
 
 kotlin {
     jvm {
@@ -26,7 +57,11 @@ kotlin {
         }
     }
     js {
-        browser { }
+        browser {  }
+        nodejs {  }
+    }
+    android {
+        publishAllLibraryVariants()
     }
     val hostOs = System.getProperty("os.name")
     val isMingwX64 = hostOs.startsWith("Windows")
@@ -36,11 +71,6 @@ kotlin {
         isMingwX64 -> mingwX64("native")
         else -> throw GradleException("Host OS is not supported in Kotlin/Native.")
     }
-    // For ARM, should be changed to iosArm32 or iosArm64
-    // For Linux, should be changed to e.g. linuxX64
-    // For MacOS, should be changed to e.g. macosX64
-    // For Windows, should be changed to e.g. mingwX64
-    linuxX64("linux")
     sourceSets {
         val commonMain by getting {
             dependencies {
@@ -75,7 +105,7 @@ kotlin {
                 implementation(kotlin("test-js"))
             }
         }
-        val linuxMain by getting { }
-        val linuxTest by getting { }
+        val nativeMain by getting { }
+        val nativeTest by getting { }
     }
 }
