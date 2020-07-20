@@ -36,6 +36,14 @@ jobs:
           command: sudo apt-get update
 
       - run:
+          name: Download Chrome
+          command: mkdir chrome && cd chrome && wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+
+      - run:
+          name: Install Chrome
+          command: sudo apt install ./google-chrome-stable_current_amd64.deb && cd .. && rm -rf chrome
+
+      - run:
           name: Install C-Bridge tool
           command: sudo apt-get install -y libncurses5
 
