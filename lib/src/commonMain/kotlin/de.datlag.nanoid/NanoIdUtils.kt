@@ -16,12 +16,14 @@ class NanoIdUtils private constructor() {
         val DEFAULT_NUMBER_GENERATOR: SecureRandom = SecureRandom()
 
         @JvmStatic
+        @ExperimentalStdlibApi
         val DEFAULT_ALPHABET: CharArray = "_-0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray()
 
         const val DEFAULT_SIZE = 21
 
         @JvmStatic
         @JvmOverloads
+        @ExperimentalStdlibApi
         fun randomNanoId(
             random: Random = DEFAULT_NUMBER_GENERATOR,
             alphabet: CharArray = DEFAULT_ALPHABET,
@@ -54,17 +56,6 @@ class NanoIdUtils private constructor() {
                     }
                 }
             }
-        }
-
-        // Created to not annotate functions with @ExperimentalStdlibApi
-        @JvmStatic
-        @JvmOverloads
-        private fun String.toCharArray(): CharArray {
-            val list: MutableList<Char> = mutableListOf()
-            for(char in this.iterator()) {
-                list.add(char)
-            }
-            return list.toCharArray()
         }
     }
 
