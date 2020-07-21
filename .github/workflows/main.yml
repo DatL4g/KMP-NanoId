@@ -17,22 +17,22 @@ jobs:
   test-windows:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
       
-    - run: CALL gradlew.bat --no-daemon
-    - run: CALL gradlew.bat --no-daemon jvmTest
-    - run: CALL gradlew.bat --no-daemon assemble check
-      env:
-        DISABLE_JAVASCRIPT_TEST: true
+      - run: gradle cleanAllTests
+      - run: gradle jvmTest
+      - run: gradle nativeTest
+        env:
+          DISABLE_JAVASCRIPT_TEST: true
           
   test-mac:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
         
-      - run: ./gradlew --no-daemon
-      - run: ./gradlew --no-daemon jvmTest
-      - run: ./gradlew --no-daemon check
+      - run: gradle cleanAllTests
+      - run: gradle jvmTest
+      - run: gradle nativeTest
         env:
           DISABLE_JAVASCRIPT_TEST: true
           
@@ -41,6 +41,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         
-      - run: ./gradlew --no-daemon
-      - run: ./gradlew --no-daemon jvmTest
-      - run: ./gradlew --no-daemon check lint testDebugUnitTest
+      - run: gradle cleanAllTests
+      - run: gradle jvmTest
+      - run: gradle nativeTest
