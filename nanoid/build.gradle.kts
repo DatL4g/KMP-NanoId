@@ -11,6 +11,7 @@ android {
     buildToolsVersion = Versions.buildToolsVersion
 
     defaultConfig {
+        targetSdkVersion(Versions.targetSdkVersion)
         versionCode = Versions.releaseVersionCode
         versionName = Versions.releaseVersion
     }

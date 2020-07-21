@@ -8,6 +8,7 @@ object Versions {
 
     val compileSdkVersion = 29.toString()
     val buildToolsVersion = "29.0.3"
+    val targetSdkVersion = 29
 
     val releaseVersion = "1.1.0"
     val releaseVersionCode = 11
