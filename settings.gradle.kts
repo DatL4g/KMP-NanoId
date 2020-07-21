@@ -1,4 +1,4 @@
 rootProject.name = "NanoId"
 
-include(":lib")
+include(":nanoid")
 enableFeaturePreview("GRADLE_METADATA")
