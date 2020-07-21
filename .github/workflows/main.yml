@@ -1,0 +1,51 @@
+name: CI Test
+
+on:
+  pull_request:
+  push:
+    branches: 
+      - '*'
+    tags-ignore:
+      - 'v*'
+    paths-ignore:
+      - 'README.md'
+      - '.gitignore'
+      - '.editorconfig'
+      - 'docs/**'
+
+jobs:
+  test-windows:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+      
+    - run: CALL gradlew.bat --no-daemon
+        shell: cmd
+        
+    - run: CALL gradlew.bat --no-daemon jvmTest
+        shell: cmd
+        
+    - run: CALL gradlew.bat --no-daemon assemble check
+        shell: cmd
+        env:
+          DISABLE_JAVASCRIPT_TEST: true
+          
+  test-mac:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+        
+      - run: ./gradlew --no-daemon
+      - run: ./gradlew --no-daemon jvmTest
+      - run: ./gradlew --no-daemon check
+        env:
+          DISABLE_JAVASCRIPT_TEST: true
+          
+  test-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        
+      - run: ./gradlew --no-daemon
+      - run: ./gradlew --no-daemon jvmTest
+      - run: ./gradlew --no-daemon check lint testDebugUnitTest
