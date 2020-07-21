@@ -36,6 +36,10 @@ android {
     }
 }
 
+repositories {
+    addRepos()
+}
+
 kotlin {
     jvm {
         compilations.all {
