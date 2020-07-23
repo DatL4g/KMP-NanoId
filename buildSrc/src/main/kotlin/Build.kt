@@ -1,9 +1,29 @@
 import org.gradle.api.artifacts.dsl.RepositoryHandler
 
 fun RepositoryHandler.addRepos() {
-    mavenLocal()
-    mavenCentral()
-    jcenter()
-    google()
+    mavenLocal {
+        metadataSources {
+            gradleMetadata()
+            mavenPom()
+        }
+    }
+    mavenCentral {
+        metadataSources {
+            gradleMetadata()
+            mavenPom()
+        }
+    }
+    jcenter {
+        metadataSources {
+            gradleMetadata()
+            mavenPom()
+        }
+    }
+    google {
+        metadataSources {
+            gradleMetadata()
+            mavenPom()
+        }
+    }
     gradlePluginPortal()
 }

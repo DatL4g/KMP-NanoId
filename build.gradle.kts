@@ -1,11 +1,17 @@
 buildscript {
     repositories {
         addRepos()
-        maven {
-            url = uri("https://dl.bintray.com/kotlin/kotlin-eap")
+        maven(uri("https://dl.bintray.com/kotlin/kotlin-eap")) {
+            metadataSources {
+                gradleMetadata()
+                mavenPom()
+            }
         }
-        maven {
-            url = uri("https://dl.bintray.com/korlibs/korlibs")
+        maven(uri("https://dl.bintray.com/korlibs/korlibs")) {
+            metadataSources {
+                gradleMetadata()
+                mavenPom()
+            }
         }
     }
 
@@ -18,11 +24,17 @@ buildscript {
 allprojects {
     repositories {
         addRepos()
-        maven {
-            url = uri("https://dl.bintray.com/kotlin/kotlin-eap")
+        maven(uri("https://dl.bintray.com/kotlin/kotlin-eap")) {
+            metadataSources {
+                gradleMetadata()
+                mavenPom()
+            }
         }
-        maven {
-            url = uri("https://dl.bintray.com/korlibs/korlibs")
+        maven(uri("https://dl.bintray.com/korlibs/korlibs")) {
+            metadataSources {
+                gradleMetadata()
+                mavenPom()
+            }
         }
     }
 }

@@ -85,6 +85,12 @@ kotlin {
                 implementation(kotlin("test-junit"))
             }
         }
+        val androidMain by getting {
+            dependsOn(jvmMain)
+        }
+        val androidTest by getting {
+            dependsOn(jvmTest)
+        }
         val jsMain by getting {
             dependencies {
                 implementation(kotlin("stdlib-js"))
