@@ -7,13 +7,13 @@ group = "de.datlag"
 version = Versions.releaseVersion
 
 android {
-    compileSdkVersion = Versions.compileSdkVersion
-    buildToolsVersion = Versions.buildToolsVersion
+    compileSdkVersion(Versions.compileSdkVersion)
+    buildToolsVersion(Versions.buildToolsVersion)
 
     defaultConfig {
         targetSdkVersion(Versions.targetSdkVersion)
-        versionCode = Versions.releaseVersionCode
-        versionName = Versions.releaseVersion
+        versionCode(Versions.releaseVersionCode)
+        versionName(Versions.releaseVersion)
     }
 
     buildTypes {

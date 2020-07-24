@@ -6,7 +6,7 @@ object Versions {
     val android = "4.1.0-beta04"
     val krypto = "1.11.2"
 
-    val compileSdkVersion = 29.toString()
+    val compileSdkVersion = 29
     val buildToolsVersion = "29.0.3"
     val targetSdkVersion = 29
 
