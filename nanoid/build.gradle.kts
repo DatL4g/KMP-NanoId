@@ -34,6 +34,10 @@ android {
         sourceCompatibility = Versions.java
         targetCompatibility = Versions.java
     }
+
+    testOptions {
+        unitTests.isReturnDefaultValues = true
+    }
 }
 
 repositories {
