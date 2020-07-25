@@ -1,0 +1,4 @@
+jdk:
+  - openjdk8
+env:
+  CHROME_BIN: /usr/lib/chromium/chrome
