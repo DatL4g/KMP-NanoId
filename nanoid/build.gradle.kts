@@ -109,3 +109,22 @@ kotlin {
         val nativeTest by getting { }
     }
 }
+
+publishing {
+    publications.withType<MavenPublication>().apply {
+        val jvm by getting { }
+        val js by getting { }
+        val metadata by getting { }
+    }
+
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/DatL4g/NanoId")
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+}
