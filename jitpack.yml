@@ -2,3 +2,6 @@ jdk:
   - openjdk8
 env:
   CHROME_BIN: /usr/lib/chromium/chrome
+install:
+  - echo "Running Tests with Info"
+  - ./gradlew allTests --warning-mode all --info
