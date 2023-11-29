@@ -1,6 +1,6 @@
 package de.datlag.nanoid
 
-import com.soywiz.krypto.SecureRandom
+import korlibs.crypto.SecureRandom
 import kotlin.experimental.and
 import kotlin.jvm.JvmOverloads
 import kotlin.jvm.JvmStatic
@@ -13,17 +13,15 @@ class NanoIdUtils private constructor() {
 
     companion object {
         @JvmStatic
-        val DEFAULT_NUMBER_GENERATOR: SecureRandom = SecureRandom()
+        val DEFAULT_NUMBER_GENERATOR: SecureRandom = SecureRandom
 
         @JvmStatic
-        @ExperimentalStdlibApi
         val DEFAULT_ALPHABET: CharArray = "_-0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray()
 
         const val DEFAULT_SIZE = 21
 
         @JvmStatic
         @JvmOverloads
-        @ExperimentalStdlibApi
         fun randomNanoId(
             random: Random = DEFAULT_NUMBER_GENERATOR,
             alphabet: CharArray = DEFAULT_ALPHABET,
