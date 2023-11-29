@@ -1,4 +1,4 @@
-package de.datlag.nanoid
+package dev.datlag.nanoid
 
 import kotlin.random.Random
 import kotlin.test.*

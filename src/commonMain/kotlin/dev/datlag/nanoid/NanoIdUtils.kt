@@ -1,4 +1,4 @@
-package de.datlag.nanoid
+package dev.datlag.nanoid
 
 import korlibs.crypto.SecureRandom
 import kotlin.experimental.and
