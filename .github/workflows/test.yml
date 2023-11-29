@@ -33,7 +33,7 @@ jobs:
         run: gradle cleanAllTests
 
       - name: Run Tests
-        run: gradle commonTest
+        run: gradle test
           
   test-mac:
     runs-on: macos-latest
@@ -54,7 +54,7 @@ jobs:
         run: gradle cleanAllTests
 
       - name: Run Tests
-        run: gradle commonTest
+        run: gradle test
           
   test-linux:
     runs-on: ubuntu-latest
@@ -75,4 +75,4 @@ jobs:
         run: gradle cleanAllTests
 
       - name: Run Tests
-        run: gradle commonTest
+        run: gradle test

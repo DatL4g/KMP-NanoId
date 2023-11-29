@@ -22,7 +22,11 @@ kotlin {
         withJava()
     }
     js(IR) {
-        browser()
+        browser {
+            testTask {
+                useMocha()
+            }
+        }
         nodejs()
         binaries.executable()
     }
