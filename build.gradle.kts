@@ -2,6 +2,7 @@ import com.vanniktech.maven.publish.SonatypeHost
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
+    id("com.android.library") version "8.1.4"
     kotlin("multiplatform") version "1.9.21"
     `maven-publish`
     signing
@@ -10,16 +11,44 @@ plugins {
 
 val libName = "nanoid"
 val libVersion = "1.0.0"
-group = "dev.datlag.nanoid"
+val artifact = "dev.datlag.nanoid"
+group = artifact
 version = libVersion
 
 repositories {
+    google()
     mavenCentral()
+    gradlePluginPortal()
+}
+
+android {
+    compileSdk = 34
+    namespace = artifact
+
+    defaultConfig {
+        minSdk = 21
+    }
+    buildTypes {
+        val debug by getting {
+            isMinifyEnabled = false
+            isShrinkResources = false
+        }
+
+        val release by getting {
+            isMinifyEnabled = false
+            isShrinkResources = false
+        }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
 }
 
 kotlin {
-    jvm {
-        withJava()
+    jvm()
+    androidTarget {
+        publishAllLibraryVariants()
     }
     js(IR) {
         browser {
@@ -44,6 +73,7 @@ kotlin {
     tvosArm64()
     tvosSimulatorArm64()
 
+    jvmToolchain(JavaVersion.VERSION_17.majorVersion.toIntOrNull() ?: (JavaVersion.VERSION_17.ordinal + 1))
     applyDefaultHierarchyTemplate()
 
     sourceSets {
@@ -60,7 +90,7 @@ kotlin {
     }
 }
 
-tasks.withType<KotlinCompile> {
+tasks.withType<KotlinCompile>().configureEach {
     kotlinOptions.jvmTarget = JavaVersion.VERSION_17.toString()
 }
 
@@ -69,7 +99,7 @@ mavenPublishing {
     signAllPublications()
 
     coordinates(
-        groupId = "dev.datlag.nanoid",
+        groupId = artifact,
         artifactId = libName,
         version = libVersion
     )
