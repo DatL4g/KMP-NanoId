@@ -32,14 +32,8 @@ jobs:
       - name: Clear previous Tests
         run: gradle cleanAllTests
 
-      - name: Run JVM Test
-        run: gradle jvmTest
-
-      - name: Run JS Test
-        run: gradle jsTest
-
-      - name: Run Native Test
-        run: gradle nativeTest
+      - name: Run Tests
+        run: gradle commonTest
           
   test-mac:
     runs-on: macos-latest
@@ -59,14 +53,8 @@ jobs:
       - name: Clear previous Tests
         run: gradle cleanAllTests
 
-      - name: Run JVM Test
-        run: gradle jvmTest
-
-      - name: Run JS Test
-        run: gradle jsTest
-
-      - name: Run Native Test
-        run: gradle nativeTest
+      - name: Run Tests
+        run: gradle commonTest
           
   test-linux:
     runs-on: ubuntu-latest
@@ -86,11 +74,5 @@ jobs:
       - name: Clear previous Tests
         run: gradle cleanAllTests
 
-      - name: Run JVM Test
-        run: gradle jvmTest
-
-      - name: Run JS Test
-        run: gradle jsTest
-
-      - name: Run Native Test
-        run: gradle nativeTest
+      - name: Run Tests
+        run: gradle commonTest

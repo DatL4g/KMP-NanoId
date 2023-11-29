@@ -5,10 +5,6 @@ import kotlin.test.*
 
 class NanoIdUtilsTest {
 
-    /* Fails on Native
-     * presumably because the memory for the variable is not released
-     * This is not a mistake by the library, but by Kotlin or the C library created
-     */
     @Test
     @Ignore
     @ExperimentalStdlibApi
@@ -39,10 +35,6 @@ class NanoIdUtilsTest {
         }
     }
 
-    /* Fails on Native
-     * presumably because the memory for the variable is not released
-     * This is not a mistake by the library, but by Kotlin or the C library created
-     */
     @Test
     @Ignore
     @ExperimentalStdlibApi
@@ -54,10 +46,6 @@ class NanoIdUtilsTest {
         }
     }
 
-    /* Fails on Native
-     * presumably because the memory for the variable is not released
-     * This is not a mistake by the library, but by Kotlin or the C library created
-     */
     @Test
     @Ignore
     @ExperimentalStdlibApi
