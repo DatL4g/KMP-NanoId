@@ -10,7 +10,7 @@ plugins {
 }
 
 val libName = "nanoid"
-val libVersion = "1.0.0"
+val libVersion = "1.0.1"
 val artifact = "dev.datlag.nanoid"
 group = artifact
 version = libVersion
